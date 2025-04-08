@@ -11,7 +11,6 @@ import {
   LineChart,
   Line,
   XAxis,
-  YAxis,
   Tooltip,
   ResponsiveContainer,
   ReferenceLine,
@@ -28,6 +27,16 @@ const chartData = [
   { percentile: 100, people: 3 },
 ];
 
+type ChartData = {
+  percentile:number,
+  people:number
+};
+
+type ChartDataProps={
+  data:ChartData[],
+  current:number
+}
+
 // Custom tooltip component
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
@@ -43,7 +52,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
-export function ComponentChart() {
+export function ComponentChart({data, current}: ChartDataProps) {
   return (
     <Card className="mt-4">
       <CardHeader>
@@ -58,7 +67,7 @@ export function ComponentChart() {
         <div className="h-[250px] mt-[-20px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
-              data={chartData}
+              data={data}
               margin={{ top: 30, right: 20, left: 10, bottom: 10 }} // increased top
             >
               <XAxis
@@ -79,12 +88,12 @@ export function ComponentChart() {
               <Tooltip content={<CustomTooltip />} />
 
               <ReferenceLine
-                x={50}
+                x={current}
                 stroke="#a1a1aa"
                 strokeDasharray="3 3"
                 label={{
                   value: "Your Data",
-                  position: "insideTop", // fixed label position
+                  position: "insideTop",
                   fill: "#a1a1aa",
                   fontSize: 14,
                   textAnchor: "middle",

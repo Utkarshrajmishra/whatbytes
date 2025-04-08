@@ -14,47 +14,54 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { type ChartConfig, ChartContainer } from "@/components/ui/chart";
+import { useState, useEffect } from "react";
 
-const TOTAL_QUESTIONS = 20;
-const CORRECT_ANSWERS = 5;
-const PERCENTAGE = (CORRECT_ANSWERS / TOTAL_QUESTIONS) * 100;
+// const TOTAL_QUESTIONS = 20;
+// const CORRECT_ANSWERS = 5;
+// const PERCENTAGE = (CORRECT_ANSWERS / TOTAL_QUESTIONS) * 100;
 
-const chartData = [
-  {
-    browser: "safari",
-    visitors: PERCENTAGE,
-    fill: "#0ea5e9",
-    background: "#ef4444", 
-  },
-];
+function PieChart({ score }: { score: number }) {
+  const [percent, setPercent] = useState(0);
 
-const chartConfig = {
-  visitors: {
-    label: "Percentage",
-  },
-  safari: {
-    label: "Score",
-    color: "#0ea5e9",
-  },
-} satisfies ChartConfig;
+  useEffect(() => {
+    const PERCENTAGE = (score / 15) * 100;
+    setPercent(PERCENTAGE);
+  }, [score]);
 
-export function PieChart() {
+  const chartData = [
+    {
+      browser: "safari",
+      visitors: percent,
+      fill: "#0ea5e9",
+      background: "#ef4444",
+    },
+  ];
+
+  const chartConfig = {
+    visitors: {
+      label: "Percentage",
+    },
+    safari: {
+      label: "Score",
+      color: "#0ea5e9",
+    },
+  } satisfies ChartConfig;
+
   return (
     <Card className="flex flex-col h-fit">
       <CardHeader className="items-center pb-0">
         <div className="flex justify-between">
           <p className="text-sm font-bold">Question Analysis</p>
           <p className="text-blue-600 font-bold text-sm">
-            {CORRECT_ANSWERS}/{TOTAL_QUESTIONS}
+            {score}/{15}
           </p>
         </div>
 
         <CardDescription>
           <span className="font-bold">
-            You scored {CORRECT_ANSWERS} questions correct out of{" "}
-            {TOTAL_QUESTIONS}.
+            You scored {score} questions correct out of 15.
           </span>{" "}
-          {PERCENTAGE >= 70
+          {percent === 100
             ? "Great job! Keep it up!"
             : "However it still needs some improvements"}
         </CardDescription>
@@ -67,16 +74,16 @@ export function PieChart() {
           <RadialBarChart
             data={chartData}
             startAngle={0}
-            endAngle={240}
-            innerRadius={60}
-            outerRadius={110}
+            endAngle={(score / 15) * 360}
+            innerRadius={63}
+            outerRadius={115}
           >
             <PolarGrid
               gridType="circle"
               radialLines={false}
               stroke="none"
-              className="first:fill-muted last:fill-background"
-              polarRadius={[65, 55]}
+              className={`first:fill-blue-100 last:fill-background`}
+              polarRadius={[74, 55]}
             />
             <RadialBar
               dataKey="visitors"
@@ -113,3 +120,5 @@ export function PieChart() {
     </Card>
   );
 }
+
+export default PieChart;

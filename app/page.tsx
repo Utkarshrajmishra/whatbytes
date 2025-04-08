@@ -1,10 +1,27 @@
-// Main Home Component
+"use client"
 import { ProgressDemo } from "@/components/progressbar";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { PieChart } from "@/components/chart";
+import PieChart from "@/components/chart";
 import { ComponentChart } from "@/components/linechart";
+import { useState } from "react";
+
 export default function Home() {
+  const [score,setScore]=useState({
+    rank: 1,
+    percentile:30,
+    score:10
+  })
+
+  const [chartData, setChartData] = useState([
+    { percentile: 0, people: 2 },
+    { percentile: 10, people: 4 },
+    { percentile: 21, people: 8 },
+    { percentile: 25, people: 16 },
+    { percentile: 50, people: 12 },
+    { percentile: 75, people: 9 },
+    { percentile: 100, people: 3 },
+  ]);
   return (
     <section className="py-4 md:py-6 h-[calc(100vh-64px)] overflow-x-scroll px-4 md:pl-12 w-full">
       <p className="text-zinc-500">Skill Test</p>
@@ -46,7 +63,7 @@ export default function Home() {
                   🏆
                 </div>
                 <div>
-                  <p className="font-bold">1</p>
+                  <p className="font-bold">{score.rank}</p>
                   <p className="text-xs text-zinc-400">YOUR RANK</p>
                 </div>
                 {/* Divider - hidden on mobile */}
@@ -59,7 +76,7 @@ export default function Home() {
                   📊
                 </div>
                 <div>
-                  <p className="font-bold">85%</p>
+                  <p className="font-bold">{score.percentile}%</p>
                   <p className="text-xs text-zinc-400">PERCENTILE</p>
                 </div>
                 <div className="h-12 w-px bg-zinc-200 ml-4 hidden sm:block" />
@@ -71,14 +88,14 @@ export default function Home() {
                   ⏱️
                 </div>
                 <div>
-                  <p className="font-bold">12/30</p>
+                  <p className="font-bold">{score.score}/15</p>
                   <p className="text-xs text-zinc-400">CORRECT ANSWERS</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <ComponentChart />
+          <ComponentChart data={chartData} current={score.percentile}/>
         </section>
 
         {/* Right Column */}
@@ -118,7 +135,7 @@ export default function Home() {
 
           {/* Question Analysis */}
           <div className="mt-4">
-            <PieChart />
+            <PieChart  score={score.score}/>
           </div>
         </div>
       </main>
