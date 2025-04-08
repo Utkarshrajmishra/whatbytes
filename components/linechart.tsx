@@ -28,14 +28,14 @@ const chartData = [
 ];
 
 type ChartData = {
-  percentile:number,
-  people:number
+  percentile: number;
+  people: number;
 };
 
-type ChartDataProps={
-  data:ChartData[],
-  current:number
-}
+type ChartDataProps = {
+  data: ChartData[];
+  current: number;
+};
 
 // Custom tooltip component
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -52,16 +52,26 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
-export function ComponentChart({data, current}: ChartDataProps) {
+export function ComponentChart({ data, current }: ChartDataProps) {
   return (
     <Card className="mt-4">
-      <CardHeader>
-        <CardTitle className="text-sm">Comparison Graph</CardTitle>
-        <CardDescription className="text-sm">
-          <span className="font-bold">You scored 30% percentile </span> which is
-          lower than the <br />
-          average percentile 72% of all the engineers who took this assessment
-        </CardDescription>
+      <CardHeader className="flex justify-between">
+        <div className="flex  flex-col gap-2">
+          <CardTitle className="text-sm flex justify-between">
+            Comparison Graph
+          </CardTitle>
+
+          <CardDescription className="text-sm">
+            <span className="font-bold text-neutral-600">
+              You scored 30% percentile{" "}
+            </span>{" "}
+            which is lower than the <br />
+            average percentile 72% of all the engineers who took this assessment
+          </CardDescription>
+        </div>
+        <div className="h-9 w-9 md:h-10 md:w-10 flex items-center justify-center bg-zinc-50 border rounded-full mr-2">
+          📈
+        </div>
       </CardHeader>
       <CardContent>
         <div className="h-[250px] mt-[-20px] w-full">

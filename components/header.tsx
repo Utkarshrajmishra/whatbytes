@@ -8,7 +8,7 @@ const Header = () => {
       <p>WhatBytes</p>
       <div className="p-1 gap-1 shadow items-center flex border-1 rounded border-zinc-200 w-fit h-fit">
         <Image src={"/user.png"} alt="User" height={24} width={24} />
-        <p className="text-sm  font-bold"></p>
+        <p className="text-sm  font-bold">Andrea Rollins</p>
       </div>
     </section>
   );

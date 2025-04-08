@@ -25,7 +25,7 @@ const NavLinks = [
 
 const Sidebar = () => {
   return (
-    <aside className="w-[260px] border-r h-[calc(100vh-16px)]">
+    <aside className="w-[260px] hidden md:inline-block border-r h-[calc(100vh-16px)]">
       <nav className="flex flex-col gap-2 mt-8">
         {NavLinks?.map((link) => (
           <li

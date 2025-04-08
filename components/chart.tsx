@@ -58,7 +58,7 @@ function PieChart({ score }: { score: number }) {
         </div>
 
         <CardDescription>
-          <span className="font-bold">
+          <span className="font-bold text-neutral-600">
             You scored {score} questions correct out of 15.
           </span>{" "}
           {percent === 100

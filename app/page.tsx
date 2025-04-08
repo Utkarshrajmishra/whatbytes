@@ -24,7 +24,7 @@ export default function Home() {
   ]);
   return (
     <section className="py-4 md:py-6 h-[calc(100vh-64px)] overflow-x-scroll px-4 md:pl-12 w-full">
-      <p className="text-zinc-500">Skill Test</p>
+      <p className="text-neutral-600 text-sm">Skill Test</p>
 
       <main className="flex flex-col lg:flex-row gap-4 md:gap-[34px] mt-4 md:mt-6">
         {/* Left Column */}
@@ -41,12 +41,12 @@ export default function Home() {
             <div className="flex flex-col md:flex-row w-full gap-2 md:gap-1">
               <div className="text-sm flex-1">
                 <p className="font-bold">Hyper Text Markup Language</p>
-                <p className="text-zinc-600 text-xs md:text-sm">
+                <p className="text-zinc-600 mt-1 text-xs md:text-sm">
                   Question: 08 | Duration: 15 mins | Submitted on 5 June 2021
                 </p>
               </div>
-              <div className="self-start md:self-center">
-                <Button className="bg-[#132278] text-xs md:text-sm border border-black">
+              <div className="self-start md:self-start">
+                <Button className="bg-[#132278] text-xs md:text-sm shadow shadow-black ">
                   Update
                 </Button>
               </div>
@@ -59,7 +59,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row justify-between px-0 sm:px-6 gap-4 sm:gap-0">
               {/* First Stat */}
               <div className="flex items-center">
-                <div className="h-8 w-8 md:h-9 md:w-9 flex items-center justify-center bg-zinc-100 border rounded-full mr-2">
+                <div className="h-9 w-9 md:h-10 md:w-10 flex items-center justify-center bg-zinc-100 border rounded-full mr-2">
                   🏆
                 </div>
                 <div>
@@ -72,8 +72,8 @@ export default function Home() {
 
               {/* Second Stat */}
               <div className="flex items-center">
-                <div className="h-8 w-8 md:h-9 md:w-9 flex items-center justify-center bg-zinc-100 border rounded-full mr-2">
-                  📊
+                <div className="h-9 w-9 md:h-10 md:w-10 flex items-center justify-center bg-zinc-100 border rounded-full mr-2">
+                  📋
                 </div>
                 <div>
                   <p className="font-bold">{score.percentile}%</p>
@@ -84,8 +84,8 @@ export default function Home() {
 
               {/* Third Stat */}
               <div className="flex items-center">
-                <div className="h-8 w-8 md:h-9 md:w-9 flex items-center justify-center bg-zinc-100 border rounded-full mr-2">
-                  ⏱️
+                <div className="h-9 w-9 md:h-10 md:w-10 flex items-center justify-center bg-zinc-100 border rounded-full mr-2">
+                  ✅
                 </div>
                 <div>
                   <p className="font-bold">{score.score}/15</p>
@@ -95,7 +95,7 @@ export default function Home() {
             </div>
           </div>
 
-          <ComponentChart data={chartData} current={score.percentile}/>
+          <ComponentChart data={chartData} current={score.percentile} />
         </section>
 
         {/* Right Column */}
@@ -135,7 +135,7 @@ export default function Home() {
 
           {/* Question Analysis */}
           <div className="mt-4">
-            <PieChart  score={score.score}/>
+            <PieChart score={score.score} />
           </div>
         </div>
       </main>
