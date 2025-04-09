@@ -99,13 +99,14 @@ export function ComponentChart({ data, current }: ChartDataProps) {
 
               <ReferenceLine
                 x={current}
-                stroke="#a1a1aa"
+                stroke="#7c3aed"
                 strokeDasharray="3 3"
                 label={{
                   value: "Your Data",
                   position: "insideTop",
                   fill: "#a1a1aa",
                   fontSize: 14,
+                  color: "#71717a",
                   textAnchor: "middle",
                 }}
               />
@@ -113,9 +114,9 @@ export function ComponentChart({ data, current }: ChartDataProps) {
               <Line
                 type="monotone"
                 dataKey="people"
-                stroke="#c084fc"
+                stroke="#7c3aed"
                 strokeWidth={1}
-                dot={{ fill: "#c084fc" }}
+                dot={{ fill: "#7c3aed" }}
                 activeDot={{ r: 6 }}
               />
             </LineChart>

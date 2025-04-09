@@ -29,7 +29,7 @@ const Sidebar = () => {
       <nav className="flex flex-col gap-2 mt-8">
         {NavLinks?.map((link) => (
           <li
-            className={`text-sm w-[95%] rounded-r-3xl  flex gap-4 py-3 pl-6  font-bold ${
+            className={`text-sm w-[95%] rounded-r-3xl  flex gap-4 py-3 pl-8  font-bold ${
               link.active ? "bg-[#f4f6f8] text-blue-700" : "text-zinc-500"
             }`}
             key={link.id}

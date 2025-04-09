@@ -1,17 +1,17 @@
-"use client"
+"use client";
 import { ProgressDemo } from "@/components/progressbar";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import PieChart from "@/components/chart";
 import { ComponentChart } from "@/components/linechart";
 import { useState } from "react";
+import FormDialog from "@/components/formdialog";
 
 export default function Home() {
-  const [score,setScore]=useState({
+  const [score, setScore] = useState({
     rank: 1,
-    percentile:30,
-    score:10
-  })
+    percentile: 30,
+    score: 10,
+  });
 
   const [chartData, setChartData] = useState([
     { percentile: 0, people: 2 },
@@ -26,7 +26,7 @@ export default function Home() {
     <section className="py-4 md:py-6 h-[calc(100vh-64px)] overflow-x-scroll px-4 md:pl-12 w-full">
       <p className="text-neutral-600 text-sm">Skill Test</p>
 
-      <main className="flex flex-col lg:flex-row gap-4 md:gap-[34px] mt-4 md:mt-6">
+      <main className="flex flex-col lg:flex-row gap-8 md:gap-[34px] mt-4 md:mt-6">
         {/* Left Column */}
         <section className="w-full lg:w-auto">
           {/* HTML Card */}
@@ -46,9 +46,12 @@ export default function Home() {
                 </p>
               </div>
               <div className="self-start md:self-start">
-                <Button className="bg-[#132278] text-xs md:text-sm shadow shadow-black ">
-                  Update
-                </Button>
+                <FormDialog
+                  score={score}
+                  setScore={setScore}
+                  setChartData={setChartData}
+                  chartData={chartData}
+                />
               </div>
             </div>
           </div>
