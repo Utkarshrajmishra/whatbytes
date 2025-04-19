@@ -136,7 +136,6 @@ export default function Home() {
             />
           </section>
 
-          {/* Question Analysis */}
           <div className="mt-4">
             <PieChart score={score.score} />
           </div>

@@ -16,17 +16,6 @@ import {
   ReferenceLine,
 } from "recharts";
 
-// Chart data
-const chartData = [
-  { percentile: 0, people: 2 },
-  { percentile: 10, people: 4 },
-  { percentile: 21, people: 8 },
-  { percentile: 25, people: 16 },
-  { percentile: 50, people: 12 },
-  { percentile: 75, people: 9 },
-  { percentile: 100, people: 3 },
-];
-
 type ChartData = {
   percentile: number;
   people: number;
@@ -37,7 +26,6 @@ type ChartDataProps = {
   current: number;
 };
 
-// Custom tooltip component
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
@@ -78,7 +66,7 @@ export function ComponentChart({ data, current }: ChartDataProps) {
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={data}
-              margin={{ top: 30, right: 20, left: 10, bottom: 10 }} // increased top
+              margin={{ top: 30, right: 20, left: 10, bottom: 10 }} 
             >
               <XAxis
                 dataKey="percentile"

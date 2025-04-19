@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { formSchema, formSchemaType } from "@/zod/formSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
@@ -56,7 +56,7 @@ function FormDialog({
     mode: "onChange",
   });
 
-  const onSubmit: SubmitHandler<formSchemaType> = (data) => {
+  const onSubmit = (data:formSchemaType) => {
     setScore({
       rank: data.rank,
       percentile: data.percent,
@@ -91,7 +91,6 @@ function FormDialog({
         </DialogHeader>
 
         <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 py-4">
-          {/* Rank Input */}
           <div className="flex justify-between items-center">
             <div className="flex gap-2 text-sm">
               <p className="text-white flex justify-center rounded-full bg-blue-900 w-6 h-6 items-center">
@@ -113,7 +112,6 @@ function FormDialog({
             </div>
           </div>
 
-          {/* Percentile Input */}
           <div className="flex justify-between items-center">
             <div className="flex gap-2 text-sm">
               <p className="text-white flex justify-center rounded-full bg-blue-900 w-6 h-6 items-center">
@@ -135,7 +133,6 @@ function FormDialog({
             </div>
           </div>
 
-          {/* Score Input */}
           <div className="flex justify-between items-center">
             <div className="flex gap-2 text-sm">
               <p className="text-white flex justify-center rounded-full bg-blue-900 w-6 h-6 items-center">
@@ -158,7 +155,6 @@ function FormDialog({
             </div>
           </div>
 
-          {/* Footer */}
           <DialogFooter className="mt-4">
             <DialogTrigger asChild>
               <Button
